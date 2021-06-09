@@ -11,10 +11,15 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-app.get('/',(req,res)=>{
+app.get('/home',(req,res)=>{
   res.render('home',{hcontent:homeStartingContent})
 })
-
+app.get('/about',(req,res)=>{
+  res.render('about',{about:aboutContent})
+})
+app.get('/contact',(req,res)=>{
+  res.render('contact',{contact:contactContent})
+})
 app.listen('3000',()=>{
   console.log("server started on port 3000")
 })
