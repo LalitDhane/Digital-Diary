@@ -1,4 +1,6 @@
 <%- include('partials/header') -%>
 <h1>welcome home</h1>
- <p><%= hcontent %></p>
+ <% hcontent.forEach(post => {%>
+   <p><%= post %> </p>
+ <% }); %>
 <%- include('partials/footer') -%>

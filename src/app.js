@@ -11,8 +11,11 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-app.get('/home',(req,res)=>{
-  res.render('home',{hcontent:homeStartingContent})
+const posts = []
+// website routes
+posts.push(homeStartingContent)
+app.get('/',(req,res)=>{
+  res.render('home',{hcontent:posts})
 })
 app.get('/about',(req,res)=>{
   res.render('about',{about:aboutContent})
@@ -20,6 +23,19 @@ app.get('/about',(req,res)=>{
 app.get('/contact',(req,res)=>{
   res.render('contact',{contact:contactContent})
 })
+app.get('/compose',(req,res)=>{
+  res.render('compose')
+})
+
+// post requests
+
+app.post('/',(req,res)=>{
+  let post = req.body.posttext
+  posts.push(post) 
+  res.redirect('/')
+})
+
 app.listen('3000',()=>{
   console.log("server started on port 3000")
 })
+ 
