@@ -13,12 +13,8 @@ app.use(express.static("public"));
 
 const posts = []
 // website routes
-posts.push({
-  posttitle:'Home',
-  posttext:homeStartingContent
-})
-app.get('/',(req,res)=>{
-  res.render('home',{hcontent:posts})
+app.get('/',(req,res)=>{ 
+  res.render('home',{postcontent:posts,hcontent:homeStartingContent})
 })
 app.get('/about',(req,res)=>{
   res.render('about',{about:aboutContent})
@@ -35,13 +31,20 @@ app.get('/posts/:name',(req,res)=>{
     posts.forEach(element => {
     if (_.lowerCase(req.params.name) === _.lowerCase(element.posttitle)) {
       ispresent = true
-      console.log('Match found!')
+      res.render('post',{title:element.posttitle,content:element.posttext})
     }
   });
   if(!ispresent) {
-    console.log('Match not found!')
+    if(req.params.name === 'about') {
+      res.redirect('/about')
+    }
+    else if(req.params.name === 'contact') {
+      res.redirect('/contact')
+    }
+    else {
+      console.log('Page dose not exists')
+    }
   }
-  res.redirect('/')
 })
 // post requests
 
