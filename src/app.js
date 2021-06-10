@@ -13,7 +13,10 @@ app.use(express.static("public"));
 
 const posts = []
 // website routes
-posts.push(homeStartingContent)
+posts.push({
+  posttitle:'Home',
+  posttext:homeStartingContent
+})
 app.get('/',(req,res)=>{
   res.render('home',{hcontent:posts})
 })
@@ -30,8 +33,7 @@ app.get('/compose',(req,res)=>{
 // post requests
 
 app.post('/',(req,res)=>{
-  let post = req.body.posttext
-  posts.push(post) 
+  posts.push(req.body) 
   res.redirect('/')
 })
 

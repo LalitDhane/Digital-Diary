@@ -1,7 +1,14 @@
 <%- include('partials/header') -%>
 <h1>Compose </h1>
  <form action="/" method="post">
-  <input type="text" name="posttext" >
-  <input type="submit" value="publish">
+  <div class="mb-3" style="margin-top: 10px; width: 700px;">
+    <label for="posttitle" class="form-label">Title</label>
+    <input type="text" class="form-control" id="posttitle" name="posttitle" autocomplete="off">
+  </div>
+  <div class="mb-3" style="margin-top: 10px; width: 700px;">
+    <label for="posttext" class="form-label">Post</label>
+    <textarea class="form-control" name ="posttext" id="posttext" style="height: 100px" autocomplete="off"></textarea>
+  </div>
+  <button style="margin-top: 25px;" type="submit" class="btn btn-primary">Publish</button>
 </form>
 <%- include('partials/footer') -%>
