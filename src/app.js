@@ -30,6 +30,19 @@ app.get('/compose',(req,res)=>{
   res.render('compose')
 })
 
+app.get('/posts/:name',(req,res)=>{
+    let ispresent = false
+    posts.forEach(element => {
+    if (req.params.name === element.posttitle) {
+      ispresent = true
+      console.log('Match found!')
+    }
+  });
+  if(!ispresent) {
+    console.log('Match not found!')
+  }
+  res.redirect('/')
+})
 // post requests
 
 app.post('/',(req,res)=>{
