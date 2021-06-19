@@ -3,6 +3,6 @@
  <p><%= hcontent %></p>
  <% postcontent.forEach(post => {%>
    <h1><%= post.posttitle%> </h1>
-   <p><%= post.posttext.substring(0,100)+" ..." %><a href="\posts\<%= post.posttitle %>"> read more.</a> </p>
+   <p><%= post.postcontent.substring(0,100)+" ..." %><a href="\<%=post._id%>"> read more.</a> </p>
  <% }); %>
 <%- include('partials/footer') -%>
